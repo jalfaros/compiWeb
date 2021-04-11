@@ -1,3 +1,5 @@
+/* obtained from https://wisej.com/support/question/textarea-with-line-numbers */
+
 .linedTextArea {
   background: url(http://i.imgur.com/2cOaJ.png);
   background-attachment: local;
@@ -5,6 +7,5 @@
   padding-left: 35px;
   padding-top: 10px;
   border-color: #ccc;
-
   font-size: 11px
 }

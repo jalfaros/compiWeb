@@ -14,20 +14,7 @@ export class TerminalViewComponent {
   response = '';
 
   async onTerminalEvent(generatedSnippet) {
-    // console.log(generatedSnippet, 'el snippet');
 
-    // (await this._compilerService.postResponse(generatedSnippet))
-    //   .subscribe(async r => {
-    //     await this._compilerService.getAllResponse()
-    //       .subscribe((data: any) => {
-    //         if (data.data !== 'Ok!') {
-    //           this.response = data.data;
-    //         } else {
-    //           this.response = null;
-    //         }
-    //         console.log(this.response);
-    //       })
-    //   });
   }
 
   constructor(private _compilerService: CompilerService) {

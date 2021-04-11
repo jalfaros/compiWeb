@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { NgTerminal } from 'ng-terminal';
 import { CompilerService } from '../../services/compiler.service';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-terminal',
@@ -19,12 +18,8 @@ export class TerminalComponent implements AfterViewInit {
   globalSnippet = '';
   openBracketCounter = 0;
   closeBracketCounter = 0;
-  resp = '';
 
   onAddingChecker(event, e) {
-
-    console.log(this.resp);
-
 
     if (!(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40)) {
 
@@ -74,17 +69,6 @@ export class TerminalComponent implements AfterViewInit {
 
           this.onEnter(this.globalSnippet);
 
-          if (this.resp) {
-            // this.child.write('\r\n');
-            // this.child.write(this.resp);
-          }
-
-          this.resp = '';
-
-          // this.child.write('\r\n$');
-
-          // this.snippet.emit(this.globalSnippet);
-
           this.globalSnippet = '';
           this.openBracketCounter = 0;
           this.closeBracketCounter = 0;
@@ -110,17 +94,14 @@ export class TerminalComponent implements AfterViewInit {
           .subscribe((data: any) => {
 
             if (data.data !== 'Ok!') {
-              this.resp = data.data;
               this.child.write('\r\n');
-              this.child.write(this.resp);
+              this.child.write(data.data);
               this.child.write('\r\n$');
             } else {
               this.child.write('\r\n$');
-              this.resp = null;
             }
           })
       });
   }
-
 
 }

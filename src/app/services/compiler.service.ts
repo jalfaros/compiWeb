@@ -10,12 +10,6 @@ export class CompilerService {
 
   constructor(private _http: HttpClient) { }
 
-  async getResponse(snippet) {
-
-
-    return await this._http.get(`${this.url}getWords?name=${snippet}`);
-  }
-
   postResponse(snippet) {
     return this._http.post(`${this.url}postWord`, snippet);
   }
