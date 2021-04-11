@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompilerService } from '../../services/compiler.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-text-editor',
@@ -7,14 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextEditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _compilerService: CompilerService) { }
+
+  text: string;
+
+  alert: string;
 
   ngOnInit(): void {
   }
 
+  async onRunCode() {
 
-  onRunCode(){
-    console.log( 'Pedro' );
+    (await this._compilerService.postResponse(this.text))
+      .subscribe(r => {
+        this._compilerService.getAllResponse()
+          .subscribe((data: any) => {
+
+            if (data.data !== 'Ok!') {
+              this.alert = data.data;
+            } else {
+              this.alert = null;
+            }
+
+          })
+      });
+
   }
 
 }

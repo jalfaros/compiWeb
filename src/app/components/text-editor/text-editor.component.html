@@ -1,9 +1,13 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <textarea class = "form-control" rows = "7"></textarea>
+            <textarea name="textData" [(ngModel)]="text" class = "form-control linedTextArea" rows = "7"></textarea>
         </div>
     </form>
+
+    <div *ngIf="alert" class="alert alert-danger mt-3 text-center" role="alert">
+        {{alert}}
+    </div>
 
     <button class="btn btn-outline-success mt-2" 
             type = "button"

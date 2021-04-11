@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "compiWeb"
+  "defaultProject": "compiWeb",
+  "cli": {
+    "analytics": "a5445224-676d-41d5-bd1d-1748946f7847"
+  }
 }

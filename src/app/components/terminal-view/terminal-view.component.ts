@@ -12,17 +12,21 @@ import { CompilerService } from 'src/app/services/compiler.service';
 
 export class TerminalViewComponent {
 
+  x = '\npepito \n saprissa'
+
   response = '';
 
   async onTerminalEvent(generatedSnippet) {
-    console.log(generatedSnippet);
-    
+    console.log(generatedSnippet, 'el snippet');
+
     (await this._compilerService.getResponse(generatedSnippet))
       .subscribe((response) => console.log(response));
   }
 
-  constructor(private _compilerService: CompilerService) { }
+  constructor(private _compilerService: CompilerService) {
 
-
+  }
 
 }
+
+

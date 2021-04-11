@@ -6,14 +6,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CompilerService {
 
-  url = 'http://localhost:8080/postWord';
+  url = 'http://localhost:8080/';
 
   constructor(private _http: HttpClient) { }
 
-  async getResponse( snippet ) {
+  async getResponse(snippet) {
 
-    const name = { snippet : snippet }
-    console.log( name )
-    return await this._http.post(`${this.url}`, name);
+
+    return await this._http.get(`${this.url}getWords?name=${snippet}`);
+  }
+
+  postResponse(snippet) {
+    return this._http.post(`${this.url}postWord`, snippet);
+  }
+
+  getAllResponse() {
+    return this._http.get(`${this.url}getAllWords`);
   }
 }
