@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { NgTerminal } from 'ng-terminal';
 
 @Component({
@@ -10,12 +10,16 @@ import { NgTerminal } from 'ng-terminal';
 export class TerminalComponent implements AfterViewInit {
 
   @ViewChild('term', { static: true }) child: NgTerminal;
+  @Input() response : string;
+  @Output() snippet = new EventEmitter<string>();
+
 
   globalSnippet = '';
   openBracketCounter = 0;
   closeBracketCounter = 0;
 
   onAddingChecker(event, e) {
+    
     if (!(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40)) {
       
       if( event.keyCode === 222 ){ 
@@ -61,6 +65,7 @@ export class TerminalComponent implements AfterViewInit {
       if (event.keyCode === 13) {
         if( this.onSnippedChecker() ){
           this.child.write('\r\n$');
+          this.snippet.emit( this.globalSnippet );
           this.globalSnippet = '';
           this.openBracketCounter = 0;
           this.closeBracketCounter = 0;

@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextEditorComponent } from './components/text-editor/text-editor.component';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { NgTerminalModule } from 'ng-terminal';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NgTerminalModule } from 'ng-terminal';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgTerminalModule
+    NgTerminalModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

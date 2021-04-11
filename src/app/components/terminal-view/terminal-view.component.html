@@ -4,7 +4,6 @@
         <h4>Pseudo Java Web Parser</h4>
     </div>
     <div class="container">
-        
     <div class="row">
         
         <div class="col-sm">
@@ -14,14 +13,16 @@
                 </div>
                 
                 <div class="card-body">
-                    <app-terminal></app-terminal>
+                    <app-terminal (snippet) = onTerminalEvent($event)>
+
+                    </app-terminal>
                 </div>
                 
             </div>
         </div>
 
         <div class="col-sm">
-            <!-- Text editor -->
+            <!-- Text editor -->    
             <div class="card mt-2" >
                 <div class="card-header" style="text-align:center">
                     <h5>Text Editor</h5>
