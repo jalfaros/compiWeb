@@ -24,11 +24,12 @@ export class TextEditorComponent implements OnInit {
       .subscribe(r => {
         this._compilerService.getAllResponse()
           .subscribe((data: any) => {
+            console.log(data)
 
             if (data.data !== 'Ok!') {
               this.alert = data.data;
             } else {
-              this.alert = null;
+              this.alert = 'Ok!';
             }
 
           })

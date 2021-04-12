@@ -19,6 +19,7 @@ export class TerminalComponent implements AfterViewInit {
   openBracketCounter = 0;
   closeBracketCounter = 0;
 
+
   onAddingChecker(event, e) {
 
     if (!(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40)) {
@@ -72,13 +73,16 @@ export class TerminalComponent implements AfterViewInit {
           this.globalSnippet = '';
           this.openBracketCounter = 0;
           this.closeBracketCounter = 0;
+
         } else {
           this.globalSnippet += '\n';
-          this.child.write('\r\n...');
+          this.child.write('\r\n ...>');
         }
 
       } else if (event.keyCode === 8) {
+
         this.onDelettingChecker();
+
       } else if (printable) {
         this.onAddingChecker(event, e);
       }
@@ -92,6 +96,8 @@ export class TerminalComponent implements AfterViewInit {
       .subscribe(r => {
         this._compilerService.getAllResponse()
           .subscribe((data: any) => {
+
+            console.log(data.data)
 
             if (data.data !== 'Ok!') {
               this.child.write('\r\n');

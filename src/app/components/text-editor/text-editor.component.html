@@ -5,8 +5,12 @@
         </div>
     </form>
 
-    <div *ngIf="alert" class="alert alert-danger mt-3 text-center" role="alert">
+    <div *ngIf="alert && alert !=='Ok!' " class="alert alert-danger mt-3 text-center" role="alert">
         {{alert}}
+    </div>
+
+    <div *ngIf="alert === 'Ok!'" class="alert alert-success mt-3 text-center" role="alert">
+        No parsing errors!
     </div>
 
     <button class="btn btn-outline-success mt-2" 
@@ -16,4 +20,4 @@
     >
             Run code!
     </button>
-</div>
+</div>  

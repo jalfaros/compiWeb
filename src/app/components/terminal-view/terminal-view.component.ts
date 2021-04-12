@@ -14,12 +14,13 @@ export class TerminalViewComponent {
   response = '';
 
   async onTerminalEvent(generatedSnippet) {
-
+    console.log( generatedSnippet );
   }
 
   constructor(private _compilerService: CompilerService) {
-
   }
+
+  
 
 }
 
