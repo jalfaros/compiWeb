@@ -21,7 +21,7 @@ export class TextEditorComponent implements OnInit {
   async onRunCode() {
 
     (await this._compilerService.postResponse(this.text))
-      .subscribe(r => {
+      .subscribe( () => {
         this._compilerService.getAllResponse()
           .subscribe((data: any) => {
             console.log(data)

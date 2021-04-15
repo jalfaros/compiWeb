@@ -58,7 +58,8 @@ export class TerminalComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.child.write('Created by Ignacio Alfaro & Warner Hurtado - TEC 2021\r\n$');
+    this.child.write('Developed: Ignacio Alfaro & Warner Hurtado TEC 2021\r\n\n$');
+    
 
     this.child.keyEventInput.subscribe(async e => {
 
