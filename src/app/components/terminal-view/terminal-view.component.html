@@ -1,0 +1,40 @@
+<div class="card shadow p-3 mb-5 bg-white rounded">
+
+    <div class="card-header" style="text-align: center">
+        <h4>Pseudo Java Web Parser</h4>
+    </div>
+    <div class="container">
+    <div class="row">
+        
+        <div class="col-sm">
+            <div class="card mt-2" >
+                <div class="card-header" style="text-align:center">
+                    <h5>Terminal</h5>
+                </div>
+                
+                <div class="card-body">
+                    <app-terminal  (snippet) = onTerminalEvent($event)>
+
+                    </app-terminal>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <!-- Text editor -->    
+            <div class="card mt-2" >
+                <div class="card-header" style="text-align:center">
+                    <h5>Text Editor</h5>
+                </div>
+
+                <div class="card-body">
+                    <app-text-editor></app-text-editor>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
