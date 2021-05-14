@@ -11,16 +11,18 @@ import { async } from '@angular/core/testing';
 
 export class TerminalViewComponent {
 
+  estado;
+
   response = '';
 
   async onTerminalEvent(generatedSnippet) {
-    console.log( generatedSnippet );
+    console.log(generatedSnippet);
   }
 
   constructor(private _compilerService: CompilerService) {
   }
 
-  
+
 
 }
 
