@@ -5,19 +5,31 @@
         </div>
     </form>
 
-    <div *ngIf="alert && alert !=='Ok!' " class="alert alert-danger mt-3 text-center" role="alert">
+    <div *ngIf="alert && error === true" class="alert alert-danger mt-3 text-center" role="alert">
         {{alert}}
     </div>
 
-    <div *ngIf="alert === 'Ok!'" class="alert alert-success mt-3 text-center" role="alert">
-        No parsing errors!
+    <div *ngIf="alert && error === false" class="alert alert-success mt-3 text-center" role="alert">
+        {{alert}}
     </div>
 
-    <button class="btn btn-outline-success mt-2" 
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-outline-success mt-2" 
             type = "button"
             style = "align-items: left;" 
             (click) = "onRunCode()"
     >
             Run code!
     </button>
+        </div>
+
+        <div class="col" style="text-align: right;">
+            <button class="btn btn-outline-danger mt-2" (click)="onWipeData()">
+                Wipe Data
+            </button>
+        </div>
+    </div>
+
 </div>  

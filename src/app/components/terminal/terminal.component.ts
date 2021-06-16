@@ -13,6 +13,7 @@ export class TerminalComponent implements AfterViewInit {
   @ViewChild('term', { static: true }) child: NgTerminal;
   @Input() response: string;
   @Output() snippet = new EventEmitter<string>();
+  @Output() variableData = new EventEmitter<string>();
 
 
   globalSnippet = '';
@@ -58,7 +59,7 @@ export class TerminalComponent implements AfterViewInit {
 
   ngAfterViewInit() {
 
-    this.child.write('Developed: Ignacio Alfaro & Warner Hurtado TEC 2021\r\n\n$');
+    this.child.write('Ignacio Alfaro & Warner Hurtado TEC 2021\r\n\n$');
     
 
     this.child.keyEventInput.subscribe(async e => {
@@ -93,18 +94,16 @@ export class TerminalComponent implements AfterViewInit {
   constructor(private _compilerService: CompilerService) { }
 
   async onEnter(generatedSnippet) {
+    this.child.write('\r\n')
     await this._compilerService.postResponse(generatedSnippet)
       .subscribe(r => {
         this._compilerService.getAllResponse()
           .subscribe((data: any) => {
-
-            console.log(data.data)
-
-            if (data.data !== 'Ok!') {
-              this.child.write('\r\n');
-              this.child.write(data.data);
+            if(data['status'] === "200"){
+              this.variableData.emit(data['data']);
               this.child.write('\r\n$');
-            } else {
+            }else{
+              this.child.write(data['data'])
               this.child.write('\r\n$');
             }
           })

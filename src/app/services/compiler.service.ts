@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CompilerService {
 
-  url = 'http://localhost:8080/';
-
+  //url = 'http://localhost:8080/';
+  url = 'https://immense-tor-39540.herokuapp.com/'
   constructor(private _http: HttpClient) { }
 
   postResponse(snippet) {
@@ -16,5 +16,9 @@ export class CompilerService {
 
   getAllResponse() {
     return this._http.get(`${this.url}getAllWords`);
+  }
+
+  wipeData(){
+    return this._http.get(`${this.url}wipeData`);
   }
 }

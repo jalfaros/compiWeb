@@ -13,12 +13,36 @@ export class TerminalViewComponent {
 
   response = '';
 
+  variablesInformation = []
+
   async onTerminalEvent(generatedSnippet) {
     console.log( generatedSnippet );
   }
 
   constructor(private _compilerService: CompilerService) {
   }
+
+
+
+  onGetEvent(event : string){
+    this.variablesInformation = [];
+    var variables = JSON.parse(event.substring(0, event.length - 2) + '}')
+    for (const [,value] of Object.entries(variables)) {
+      this.variablesInformation.push(value);
+    }
+  }
+
+  onWipeData(){
+    this.variablesInformation = []
+  }
+
+
+
+  
+
+
+
+
 
   
 

@@ -1,40 +1,77 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
 
     <div class="card-header" style="text-align: center">
-        <h4>Pseudo Java Web Parser</h4>
+        <h4>Pseudo Java Web Interpreter</h4>
     </div>
+
     <div class="container">
-    <div class="row">
-        
-        <div class="col-sm">
-            <div class="card mt-2" >
-                <div class="card-header" style="text-align:center">
-                    <h5>Terminal</h5>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card mt-2" >
+                    <div class="card-header" style="text-align:center">
+                        <h5>Terminal</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                        <app-terminal (variableData) = "onGetEvent($event)"  (snippet) = onTerminalEvent($event)>
+                        </app-terminal>
+                    </div>
+                    
                 </div>
-                
-                <div class="card-body">
-                    <app-terminal  (snippet) = onTerminalEvent($event)>
-
-                    </app-terminal>
-                </div>
-                
             </div>
-        </div>
 
-        <div class="col-sm">
-            <!-- Text editor -->    
-            <div class="card mt-2" >
-                <div class="card-header" style="text-align:center">
-                    <h5>Text Editor</h5>
+            <div class="col-sm-6">
+                <div class="card mt-2" >
+                    <div class="card-header" style="text-align:center">
+                        <h5>Text Editor</h5>
+                    </div>
+    
+                    <div class="card-body">
+                        <app-text-editor (wipeData)= "onWipeData()" (variablesInformation)="onGetEvent($event)"></app-text-editor>
+                    </div>
+    
                 </div>
-
-                <div class="card-body">
-                    <app-text-editor></app-text-editor>
-                </div>
-
             </div>
+
+            <div class="col">
+                <div class="card mt-2">
+                    <div class="card-header" style="text-align: center;">
+                        <h5>Variables information</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-striped" *ngIf="variablesInformation.length !== 0">
+                           <thead style="text-align: center;">
+                               <tr>
+                                   <th scope="col">Type</th>
+                                   <th scope="col">Name</th>
+                                   <th scope="col">Value</th>
+                               </tr>
+                           </thead>
+                           
+                           <tbody style="text-align: center;">
+                               
+                            <tr *ngFor="let variable of variablesInformation; let i = index;">
+                                <th>{{variablesInformation[i][2]}}</th>
+                                <th>{{variablesInformation[i][0]}}</th>
+                                <th>{{variablesInformation[i][1]}}</th>
+                                <!-- Toca validar eso -->
+                            </tr>
+
+                           </tbody>
+                        </table>
+
+                        <div class="alert alert-warning" role="alert" style="text-align: center;" *ngIf="variablesInformation.length === 0">
+                            There´s no variables created yet...
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
-    </div>
+
 </div>
